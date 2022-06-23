@@ -1,0 +1,32 @@
+<style>
+.quantity-remaining p { display: inline; background-color:#199F6B; color:#fff; font-size:15px; padding:7px 10px; margin:0; }
+.quantity-remaining.last p { background-color:#e60000; }
+.quantity-remaining.none p { background-color:#444; }
+</style>
+{% assign product_qty = 0 %}
+{% for variant in product.variants %}
+    {% if variant.inventory_quantity > 0 %}
+        {% assign product_qty = product_qty | plus: variant.inventory_quantity %}
+    {% endif %}
+{% endfor %}
+{% if product_qty == 0 %}
+<div class="quantity-remaining none">
+    <p>
+        <span class="sd-count"> <strong>Out of stock</strong> </span>
+    </p>
+</div>
+{% endif %}
+{% if product_qty == 1 %}
+<div class="quantity-remaining last">
+    <p>
+        <span class="sd-count"> <strong>Last One Remaining!</strong> </span>
+    </p>
+</div>
+{% endif %}
+{% if product_qty > 1 %}
+<div class="quantity-remaining">
+    <p>
+        <span class="sd-count"> Available: <strong>{{ product_qty }}</strong> </span>
+    </p>
+</div>
+{% endif %}
