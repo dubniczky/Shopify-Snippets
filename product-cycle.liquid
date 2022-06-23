@@ -1,0 +1,12 @@
+{% assign prev_handle = handle | minus: 1 %}
+{% assign prev_handle = prev_handle | append: "" %}
+{% assign prev_img = all_products[prev_handle].images[0] | image_url: width: 150 | image_tag %}
+{% if all_products[handle].tags[0] == all_products[prev_handle].tags[0] %}
+	{{ prev_img | link_to: prev_handle}}
+{% endif %}
+{% assign next_handle = handle | plus: 1 %}
+{% assign next_handle = next_handle | append: "" %}
+{% assign next_img = all_products[next_handle].images[0] | image_url: width: 150 | image_tag %}
+{% if all_products[handle].tags[0] == all_products[next_handle].tags[0] %}
+	{{ next_img | link_to: next_handle}}
+{% endif %}
