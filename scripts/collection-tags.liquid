@@ -1,0 +1,36 @@
+<style>
+.tag-filters-container {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+.tag-filters {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+    list-style-type: none;
+    max-height: 400px;
+    overflow-y: scroll;
+}
+.tag-filters a {
+    color: black;
+    text-decoration: none;
+}
+.tag-filters li.active a {
+    text-decoration: underline;
+}
+</style>
+
+<div class="tag-filters-container">
+    <h2>Search By Tag</h2>
+
+    {% if collection.all_tags.size > 0 %}
+    <ul class="tag-filters">
+        {% for tag in collection.all_tags %}
+            {% if current_tags contains tag %}
+                <li class="tag-filters__item active">{{ tag | link_to_remove_tag: tag }}</li>
+            {% else %}
+                <li class="tag-filters__item">{{ tag | link_to_tag: tag }}</li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+    {% endif %}
+</div>
