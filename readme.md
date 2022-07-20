@@ -2,6 +2,12 @@
 
 Snippets of code written in liquid for small functionalities on Shopify stores.
 
+## Support ❤️
+
+If you find the project useful, please consider supporting, or contributing.
+
+[!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/dubniczky)
+
 ## Snippets
 
 1. **Product Quantity**: displays the number of stock remaining. Shows warning if only one or none is available. ([product-quantity.liquid](/scripts/product-quantity.liquid))
